@@ -1,2 +1,10 @@
-# react_mysql_fullstack
-A full stack application using React, Node,  and MySQL
+# React MySQL Full stack blog
+
+## This project uses/will use the following Stack:
+
+- React
+- MySQL
+- Node
+- Express
+- Tailwindcss
+- Google Fonts

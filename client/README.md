@@ -1,10 +1,12 @@
 # React MySQL Full stack blog
 
-## This project uses/will use the following Stack:
+## This is the frontend part of the project
+
+### What I an using
 
 - React
-- MySQL
-- Node
-- Express
+- Context API
+- React Router
+- Axios
 - Tailwindcss
 - Google Fonts

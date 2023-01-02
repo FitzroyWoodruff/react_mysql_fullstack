@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-const Home = () => {
+const Sidebar = () => {
 	const fakePostd = [
 		{
 			id: 1,
@@ -44,37 +43,20 @@ const Home = () => {
 			img: "https://images.pexels.com/photos/14686142/pexels-photo-14686142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 		},
 	];
-
 	return (
-		<main className=" bg-red-300 flex ">
-			<div className="flex flex-col bg-slate-300 md:w-5/6 mx-auto p-5 gap-9">
-				{fakePostd.map((post) => (
-					<div className="post flex flex-col gap-3" key={post.id}>
-						<div className="img basis-1/4">
-							<img
-								src={post.img}
-								alt={post.title}
-								className="w-full object-cover h-full"
-							/>
-						</div>
-						<div className="info basis-3/4">
-							<Link to={`/post/${post.id}`}>
-								<h2 className=" text-2xl font-Oswald font-bold uppercase">
-									{post.title}
-								</h2>
-							</Link>
-							<p>{post.desc}</p>
-							<Link to={`/post/${post.id}`}>
-								<button className="bg-slate-800 px-6 py-2 cursor-pointer text-white font-Oswald font bold text-xl  rounded-lg">
-									Read More
-								</button>
-							</Link>
-						</div>
-					</div>
-				))}
-			</div>
-		</main>
+		<div>
+			<h2>Recent Posts</h2>
+
+			{fakePostd.map((post) => (
+				<div className="post flex flex-col gap-3" key={post.id}>
+					<h3 className="text-3xl font-Oswald font-bold uppercase">
+						{post.title}
+					</h3>
+					<p className="text-ellipsis overflow-hidden">{post.desc}</p>
+				</div>
+			))}
+		</div>
 	);
 };
 
-export default Home;
+export default Sidebar;

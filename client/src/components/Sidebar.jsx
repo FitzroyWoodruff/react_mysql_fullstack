@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
 	const fakePostd = [
@@ -45,14 +46,24 @@ const Sidebar = () => {
 	];
 	return (
 		<div>
-			<h2>Recent Posts</h2>
+			<h2 className="text-3xl font-Oswald font-bold uppercase">Recent Posts</h2>
 
 			{fakePostd.map((post) => (
-				<div className="post flex flex-col gap-3" key={post.id}>
-					<h3 className="text-3xl font-Oswald font-bold uppercase">
+				<div className="post flex flex-col gap-2 pb-5" key={post.id}>
+					<img
+						src={post.img}
+						alt=""
+						className="w-full object-cover h-[200px]"
+					/>
+					<h3 className="text-xl font-Oswald font-bold uppercase">
 						{post.title}
 					</h3>
-					<p className="text-ellipsis overflow-hidden">{post.desc}</p>
+					<p className=" line-clamp-2">{post.desc}</p>
+					<Link to={`/post/${post.id}`}>
+						<button className="bg-slate-800 px-3 py-1 cursor-pointer text-white font-Oswald font bold text-lg  rounded-lg">
+							Read More...
+						</button>
+					</Link>
 				</div>
 			))}
 		</div>

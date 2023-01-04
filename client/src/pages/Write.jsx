@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import Sidebar from "../components/Sidebar";
 
 const Write = () => {
 	const [value, setValue] = useState("");

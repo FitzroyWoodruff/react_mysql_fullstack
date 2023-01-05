@@ -17,6 +17,7 @@ const Register = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		console.log("++++THIS IS RUNNING++++");
 		try {
 			const res = await axios.post(`${url}/auth/register`, inputs);
 			console.log(res);

@@ -1,8 +1,8 @@
 # React MySQL Full stack blog
 
-## This is the frontend part of the project
+## This is the Frontend part of the project
 
-### What I an using
+### What I am using and what I plan on using
 
 - React
 - Context API

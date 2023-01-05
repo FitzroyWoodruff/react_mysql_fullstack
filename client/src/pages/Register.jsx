@@ -13,13 +13,15 @@ const Register = () => {
 		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 	};
 
-	const url = "http://localhost:5000/api";
+	//const url = "http://localhost:5000/api";
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("++++THIS IS RUNNING++++");
+
 		try {
-			const res = await axios.post(`${url}/auth/register`, inputs);
+			const res = await axios.post(`/auth/register`, inputs);
+			// const res = await axios.post(`${url}/auth/register`, inputs);
+
 			console.log(res);
 		} catch (err) {
 			console.log(err);

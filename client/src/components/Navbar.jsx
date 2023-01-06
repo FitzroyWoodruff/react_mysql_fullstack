@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 const Navbar = () => {
+	const { currentUser, logout } = useContext(AuthContext);
 	return (
 		<div className=" bg-red-600 py-2">
 			<div className="flex flex-col md:w-5/6 md:flex-row  mx-auto justify-between items-center">
@@ -29,10 +31,22 @@ const Navbar = () => {
 					>
 						About
 					</Link>
-					<span className="font-Oswald px-4">Jackson</span>
-					<span className="link font-Oswald text-slate-800 cursor-pointer px-4">
-						Logout
-					</span>
+					<span className="font-Oswald px-4">{currentUser?.username}</span>
+					{currentUser ? (
+						<span
+							onClick={logout}
+							className="link font-Oswald text-slate-800 cursor-pointer px-4"
+						>
+							Logout
+						</span>
+					) : (
+						<Link
+							to="/login"
+							className="link font-Oswald text-slate-800 cursor-pointer px-4"
+						>
+							Login
+						</Link>
+					)}
 					<span className="link font-Oswald cursor-pointer px-4">
 						<Link to="/write">
 							<button className=" bg-slate-800 px-4 py-4 cursor-pointer text-white font-Oswald font bold text-xl  rounded-lg">

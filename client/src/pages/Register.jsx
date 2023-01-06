@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
@@ -8,6 +8,10 @@ const Register = () => {
 		email: "",
 		password: "",
 	});
+
+	const [error, setError] = useState(null);
+
+	const navigate = useNavigate();
 
 	const handleChange = (e) => {
 		setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -19,12 +23,11 @@ const Register = () => {
 		e.preventDefault();
 
 		try {
-			const res = await axios.post(`/auth/register`, inputs);
+			await axios.post(`/auth/register`, inputs);
 			// const res = await axios.post(`${url}/auth/register`, inputs);
-
-			console.log(res);
+			navigate("/login");
 		} catch (err) {
-			console.log(err);
+			setError(err.response.data);
 		}
 	};
 
@@ -63,7 +66,7 @@ const Register = () => {
 					>
 						Submit
 					</button>
-					<p className=" font-bold">Error Signing In!!</p>
+					{error && <p className=" font-bold">{error}</p>}
 					<span className="pt-4">
 						Already have an account?<span> </span>
 						<Link to="/login" className=" cursor-pointer text-white">

@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 
 //controller route functions
 import authRoutes from "./routes/auth.js";
-import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 
 //initialize express as app
@@ -20,7 +19,6 @@ app.use(cookieParser());
 
 //We utilize our routes each of which has a controller function
 app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 
 app.listen(PORT, () => {

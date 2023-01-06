@@ -52,11 +52,13 @@ const Single = () => {
 						alt={post?.title}
 					/>
 					<div className="user flex items-center gap-3 mt-4">
-						<img
-							className="w-[50px] h-[50px] object-cover rounded-full"
-							src="https://images.pexels.com/photos/6621317/pexels-photo-6621317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-							alt=""
-						/>
+						{post.userImg && (
+							<img
+								className="w-[50px] h-[50px] object-cover rounded-full"
+								src={post?.userImg}
+								alt=""
+							/>
+						)}
 						<div className="info">
 							<span className="text-xl font-Oswald font-bold uppercase">
 								{post.username}

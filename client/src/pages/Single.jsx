@@ -1,16 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import { Link, useLocation } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import axios from "axios";
+import moment from "moment";
 
 const Single = () => {
+	const [post, setPost] = useState({});
+
+	const location = useLocation();
+
+	const postId = location.pathname.split("/")[2];
+
+	const { currentUser } = useContext(AuthContext);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await axios.get(`/posts/${postId}`);
+				setPost(res.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchData();
+	}, [postId]);
 	return (
 		<main className=" bg-red-300 flex ">
 			<div className="flex flex-col md:flex-row bg-slate-300 w-full md:w-5/6 mx-auto p-5 gap-9">
 				<div className="content md:basis-3/4">
 					<img
 						className="w-[100%] h-[450px] object-cover "
-						src="https://images.pexels.com/photos/14686142/pexels-photo-14686142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-						alt=""
+						src={post?.img}
+						alt={post?.title}
 					/>
 					<div className="user flex items-center gap-3 mt-4">
 						<img
@@ -19,13 +41,17 @@ const Single = () => {
 							alt=""
 						/>
 						<div className="info">
-							<span>Jackson</span>
-							<p>Posted 5 days ago</p>
+							<span>{post.username}</span>
+							<p>Posted {moment(post.date).fromNow()}</p>
 						</div>
-						<div className="edit">
-							<Link to={`/write?edit=2`}>Edit Post</Link>
-						</div>
-						<div className="delete">Delete Post</div>
+						{currentUser?.username === post.username && (
+							<div>
+								<div className="edit">
+									<Link to={`/write?edit=2`}>Edit Post</Link>
+								</div>
+								<div className="delete">Delete Post</div>
+							</div>
+						)}
 					</div>
 					<h1 className="text-3xl font-Oswald font-bold uppercase">
 						Why Are there so many Home Alone movies?

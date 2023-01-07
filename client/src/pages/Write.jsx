@@ -64,7 +64,7 @@ const Write = () => {
 						<ReactQuill
 							theme="snow"
 							value={value}
-							onchange={setValue}
+							onChange={setValue}
 							className=" bg-white h-[350px] mb-12 overflow-scroll"
 						/>
 					</div>

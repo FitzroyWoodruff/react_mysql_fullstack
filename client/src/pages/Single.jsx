@@ -48,7 +48,7 @@ const Single = () => {
 				<div className="content md:basis-3/4">
 					<img
 						className="w-[100%] h-[450px] object-cover "
-						src={post?.img}
+						src={`../upload/${post?.img}`}
 						alt={post?.title}
 					/>
 					<div className="user flex items-center gap-3 mt-4">
